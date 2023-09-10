@@ -53,9 +53,6 @@ To get started with any of these projects, follow the instructions in their resp
 
 Contributions are welcome! If you'd like to contribute to any of the projects or have ideas for improvements, please feel free to open an issue or submit a pull request. Your input is highly valued!
 
-## License
-
-This repository is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ---
 
