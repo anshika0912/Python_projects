@@ -15,31 +15,31 @@ fp.close()
 '''
 #contact directory project
 def SearchByMobile():
- smob=input("Enter the mobile number to be saerched:")
- fp=open("data.txt","r")
- data=fp.readlines()#it will return list
+ smob=input("Enter the mobile number to be saerched:")   # Ask the user for input: mobile number to be searched
+ fp=open("data.txt","r")  # Open the file named "data.txt" in read mode and assign it to the variable 'fp'
+ data=fp.readlines()#it will return list &  # Read all lines from the file into a list named 'data'
  #print(data)
- for x in data:
-    r=x.split(':')
-    if smob+'\n'==r[1]:
-       print("Mobile number found",x)
-       fp.close()
+ for x in data:   # Loop through each line in 'data'
+    r=x.split(':')  # Split the current line by ':' and store the result in 'rec' (a list)
+    if smob+'\n'==r[1]:  # Check if the input mobile number matches the one in the record
+       print("Mobile number found",x)   # Print a message indicating that the mobile number is found along with the entire line
+       fp.close() # Close the file
 
-      # break
+       break # Exit the loop
      #else:
         # print("Not found!!!")
          
          
 
 def delete_record():
-    emob=input("Enter the mobile number to be deleted")
-    fp=open("data.txt","r")
-    data =fp.readlines()
+    emob=input("Enter the mobile number to be deleted") # Ask the user for input: mobile number to be deleted
+    fp=open("data.txt","r")  # Open the file named "data.txt" in read mode and assign it to the variable 'fp'
+    data =fp.readlines() # Read all lines from the file into a list named 'data'
     for x in data:#accessing the data
         rec=x.split(':')#it will split the list
         if emob+'\n'==rec[1]:#it will check
             data.remove(x)#it will remove the record which the user has entered
-            fp1=open("data.txt","w")#opening the file in write mode
+            fp1=open("data.txt","w")# Opening a file named "data1.txt" in write mode and assigning it to the variable 'fp'
             newdata=''.join(data)#converting the data from list to string
             fp1.write(newdata)#overriding the data
             fp1.close()
@@ -47,38 +47,38 @@ def delete_record():
             break
      
     
-def SearchByName():
-     sname=input("Enter the name to be searched:")
-     fp=open("data.txt","r")
-     data=fp.readlines()#it will return list
+def SearchByName(): # Function to search for a contact by name
+     sname=input("Enter the name to be searched:")# Ask the user for input: name to be searched
+     fp=open("data.txt","r") # Open the file named "data.txt" in read mode and assign it to the variable 'fp'
+     data=fp.readlines()#it will return list  and # Read all lines from the file into a list named 'data'
      #print(data)
      for x in data:
-         r=x.split(':')
-         if sname==r[0]:
-           print("Name found",x)
+         r=x.split(':')  # Split the current line by ':' and store the result in 'rec' (a list)
+         if sname==r[0]:  # Check if the input name matches the one in the record
+           print("Name found",x) # Print a message indicating that the name is found along with the entire line
            fp.close()
 
-def update_record():
+def update_record():  # Function to update a contact by mobile number
     mob=input("Enter mobile number to update record:")
     fp=open("data.txt","r")
     data =fp.readlines()
     for x in data:#accessing the data
         rec=x.split(':')#it will split the list
-        if mob+'\n'==rec[1]:
+        if mob+'\n'==rec[1]:  # Check if the input mobile number matches the one in the record
             print("1.update mobile no.:")
             print("2.update Name:")
             ch=input("Enter your choice:")
             if ch=='1':
                 nmob=input("Enter new mobile no.:")
-                rec[1]=nmob+'\n'
-                data.remove(x)
-                temp=':'.join(rec)
-                data.append(temp)
-                fdata=''.join(data)
-                fp1=open("data.txt","w")
-                fp1.write(fdata)
+                rec[1]=nmob+'\n'  # Update the mobile number in the record
+                data.remove(x) # Remove the current line from the 'data' list
+                temp=':'.join(rec) # Join the 'rec' list back into a string 'temp'
+                data.append(temp)# Append the 'temp' string to the 'data' list
+                fdata=''.join(data) # Join the 'data' list into a single string 'fdata'
+                fp1=open("data.txt","w") # Open the file named "data.txt" in write mode and assign it to the variable 'fp1'
+                fp1.write(fdata) # Write the 'fdata' string back to the file, effectively overwriting the data
                 fp1.close()
-                print("Record updated successfully!!!")
+                print("Record updated successfully!!!")  # Print a message indicating that the record is updated successfully
                 
             elif ch=='2':
                 print("update name")
@@ -116,13 +116,13 @@ while True:
          fp.close()
          
     elif ch=='3':
-         update_record()
+         update_record() # Call the update_record function
     elif ch=='4':
-        delete_record()
+        delete_record() # Call the delete_record function
     elif ch=='5':
-         SearchByMobile()
+         SearchByMobile()  # Call the SearchByMobile function
     elif ch=='6':
-         SearchByName()
+         SearchByName()  # Call the SearchByName function
     elif ch=='7':
          print("Thanks for using the application!!!")
          break
